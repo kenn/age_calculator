@@ -4,7 +4,7 @@ A simple age calculator for Ruby. Comes with age validator for ActiveModel.
 
 # Background
 
-You might think calculating age from a birthday is easy, but you'd be wrong - there is [so much confusion](http://stackoverflow.com/questions/10463400/age-calculation-in-ruby) on the topic, and sadly, many people are doing it wrong. Even right ways can look really complicated.
+You might think calculating age from a birthday is easy, but you'd be wrong - there is [so](https://www.ruby-forum.com/topic/49265) [much](http://stackoverflow.com/questions/10463400/age-calculation-in-ruby) [confusion](http://stackoverflow.com/questions/819263/get-persons-age-in-ruby) on the topic, and sadly, many people are doing it wrong. Even right ways can look really complicated.
 
 Here's the simplest, cleanest way:
 
