@@ -46,7 +46,10 @@ $ gem install age_calculator
 For a basic usage:
 
 ```ruby
+birthday = Date.new(1987,12,31)
+
 AgeCalculator.new(birthday).age
+ => 26
 ```
 
 For a model with a validation on the age:
@@ -55,9 +58,6 @@ For a model with a validation on the age:
 class Adult < ActiveRecord::Base
   validates :birthday, age: { over: 18 }
 
-  def age
-    AgeCalculator.new(birthday).age
-  end
 end
 ```
 

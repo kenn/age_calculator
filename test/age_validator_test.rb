@@ -22,11 +22,28 @@ describe AgeValidator do
     end
   end
 
-  it 'rejects invalid values' do
+  it 'validates presence' do
     travel_to Date.new(2014,1,2) do
       @adult.birthday = nil
       @adult.valid?.must_equal false
-      @adult.errors.full_messages.first.must_equal 'Birthday is not a date'
+      @adult.errors.full_messages.first.must_equal "Birthday can't be blank"
+    end
+  end
+
+  it 'validates date' do
+    travel_to Date.new(2014,1,2) do
+      @adult.birthday = 'invalid'
+      @adult.valid?.must_equal false
+      @adult.errors.full_messages.first.must_equal 'Birthday is not a valid date'
+    end
+  end
+
+  it 'allows blank' do
+    adult = AdultAllowBlank.new
+
+    travel_to Date.new(2014,1,2) do
+      adult.birthday = nil
+      adult.valid?.must_equal true
     end
   end
 end

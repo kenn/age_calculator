@@ -1,6 +1,6 @@
 en:
   errors:
     messages:
-      not_date: "is not a date"
+      not_date: "is not a valid date"
       age_over: "must be over %{age}"
       age_under: "must be under %{age}"

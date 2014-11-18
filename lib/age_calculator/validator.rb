@@ -2,9 +2,8 @@ class AgeValidator < ActiveModel::EachValidator
   COMPARATORS = { :over => :>=, :under => :<= }.freeze
 
   def validate_each(record, attribute, value)
-    unless value.is_a?(Date)
-      return record.errors.add(attribute, :not_date, options)
-    end
+    return record.errors.add(attribute, :blank, options) if value.blank?
+    return record.errors.add(attribute, :not_date, options) unless value.is_a?(Date)
 
     age = AgeCalculator.new(value).age
 

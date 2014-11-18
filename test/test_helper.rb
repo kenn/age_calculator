@@ -25,3 +25,13 @@ class Adult
     AgeCalculator.new(birthday).age
   end
 end
+
+class AdultAllowBlank
+  include ActiveModel::Validations
+  attr_accessor :birthday
+  validates :birthday, age: { over: 18 }, allow_blank: true
+
+  def age
+    AgeCalculator.new(birthday).age
+  end
+end
