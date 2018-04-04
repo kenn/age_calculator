@@ -49,6 +49,7 @@ For a basic usage:
 
 ```ruby
 birthday = Date.new(2000,1,1)
+
 ac = AgeCalculator.new(birthday)
 
 ac.age
@@ -63,12 +64,10 @@ For a model with a validation on the age:
 ```ruby
 class Adult < ActiveRecord::Base
   validates :birthday, age: { over: 18 }
-
 end
 
 class Adult < ActiveRecord::Base
   validates :birthday, age: { over: 18, asof: Date.today.beginning_of_year }
-
 end
 ```
 
