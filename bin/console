@@ -1,0 +1,9 @@
+#!/usr/bin/env ruby
+
+require 'bundler/setup'
+require 'age_calculator'
+
+require_relative '../test/load_models'
+
+require 'irb'
+IRB.start

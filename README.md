@@ -12,20 +12,22 @@ Here's the simplest, cleanest way:
 (today.to_s(:number).to_i - birthday.to_s(:number).to_i) / 10000
 ```
 
-Suppose today is May 16, 2014 and calculate the age of people whose birthdays are May 15, 1996 (should be 18 years old) and May 17, 1996 (should be 17 years old) respectively.
+Suppose today is May 16, 2018 and calculate the age of people whose birthdays are May 15, 2000 (should be 18 years old) and May 17, 2000 (should be 17 years old) respectively.
 
 ```ruby
-> 20140516 - 19960517
+> 20180516 - 20000517
  => 179999
 > 179999 / 10000
  => 17
-> 20140516 - 19960515
+> 20180516 - 20000515
  => 180001
 > 180001 / 10000
  => 18
 ```
 
 Couldn't be simpler. Note that Ruby truncates the decimal fraction.
+
+AgeCalculator is a small library to do just that.
 
 ## Installation
 
@@ -46,10 +48,14 @@ $ gem install age_calculator
 For a basic usage:
 
 ```ruby
-birthday = Date.new(1987,12,31)
+birthday = Date.new(2000,1,1)
+ac = AgeCalculator.new(birthday)
 
-AgeCalculator.new(birthday).age
- => 26
+ac.age
+=> 18
+
+ac.age(asof: Date.new(2020,1,1))
+=> 20
 ```
 
 For a model with a validation on the age:
@@ -57,6 +63,11 @@ For a model with a validation on the age:
 ```ruby
 class Adult < ActiveRecord::Base
   validates :birthday, age: { over: 18 }
+
+end
+
+class Adult < ActiveRecord::Base
+  validates :birthday, age: { over: 18, asof: Date.today.beginning_of_year }
 
 end
 ```

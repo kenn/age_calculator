@@ -5,11 +5,14 @@ require 'age_calculator/railtie' if defined?(Rails)
 class AgeCalculator
   def initialize(birthday)
     @birthday = birthday
+
+    unless @birthday.is_a?(Date)
+      fail ArgumentError, "#{@birthday.inspect} is not a date"
+    end
   end
 
-  def age
-    return unless @birthday
-    (today.strftime('%Y%m%d').to_i - @birthday.strftime('%Y%m%d').to_i) / 10000
+  def age(asof: nil)
+    ((asof || today).strftime('%Y%m%d').to_i - @birthday.strftime('%Y%m%d').to_i) / 10000
   end
 
   def today
