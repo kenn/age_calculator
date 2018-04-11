@@ -13,4 +13,8 @@ class AgeValidator < ActiveModel::EachValidator
       end
     end
   end
+
+  def self.locales
+    Dir[Pathname.new(__FILE__).join('../../../config/locales/*.yml')]
+  end
 end

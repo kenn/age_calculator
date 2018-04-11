@@ -11,7 +11,7 @@ include ActiveSupport::Testing::TimeHelpers
 
 # Locale
 I18n.enforce_available_locales = true
-I18n.load_path += Pathname.new(__FILE__).dirname.parent.glob('config/locales/*.yml')
+I18n.load_path += AgeValidator.locales
 
 class Adult
   include ActiveModel::Validations
