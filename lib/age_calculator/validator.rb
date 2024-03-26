@@ -1,3 +1,5 @@
+require 'pathname'
+
 class AgeValidator < ActiveModel::EachValidator
   COMPARATORS = { :over => :>=, :under => :<= }.freeze
 
